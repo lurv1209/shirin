@@ -1,0 +1,173 @@
+body {
+  background: #ffeef5;
+  font-family: "Segoe UI", sans-serif;
+  text-align: center;
+  padding: 50px;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.heart-btn {
+  font-size: 60px;
+  color: #e25555;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  user-select: none;
+}
+
+.heart-btn:hover {
+  transform: scale(1.2);
+}
+
+/* Modal container (hidden by default) */
+#modal {
+  display: none; /* hidden */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  flex-direction: column;
+  padding: 20px;
+}
+
+/* Show modal */
+#modal.show {
+  display: flex;
+  opacity: 1;
+}
+
+/* Card image inside modal */
+#modal img {
+  max-width: 90vw;
+  max-height: 80vh;
+  border-radius: 16px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  background: white;
+  border: 5px solid white;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 1.5s ease-in, transform 0.6s ease;
+  z-index: 10;
+}
+
+/* Fade in & pop the card */
+#modal.show img {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Close button */
+#closeBtn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 40px;
+  color: white;
+  cursor: pointer;
+  user-select: none;
+  z-index: 1100;
+  text-shadow: 0 0 10px black;
+}
+
+/* Birthday message */
+#birthdayMsg {
+  font-size: 3rem;
+  color: #005913;
+  margin: 20px 0 0 0;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 1s ease, transform 0.5s ease;
+  font-weight: 900;
+  user-select: none;
+  text-shadow: 0 0 8px rgba(32, 153, 1, 0.6);
+  z-index: 10;
+}
+
+#birthdayMsg.show {
+  opacity: 1;
+  transform: scale(1.1);
+  animation: popScale 0.5s ease forwards;
+}
+
+@keyframes popScale {
+  0% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Confetti container */
+#confettiContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 999;
+  overflow: visible;
+}
+
+.confetti {
+  position: absolute;
+  font-size: 28px;
+  opacity: 0;
+  animation: confettiDrop 3s forwards;
+  user-select: none;
+  transform-origin: center;
+}
+
+@keyframes confettiDrop {
+  0% {
+    opacity: 1;
+    transform: translateY(-100px) rotate(0deg) scale(1);
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(calc(100vh + 50px)) rotate(360deg) scale(1.2);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Sparkles behind modal */
+#sparkles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 500;
+}
+
+.sparkle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #fff;
+  box-shadow: 0 0 6px 2px #fffb05, 0 0 10px 4px #ff80ab;
+  border-radius: 50%;
+  opacity: 0;
+  animation: sparkleBlink 2s infinite;
+}
+
+@keyframes sparkleBlink {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
